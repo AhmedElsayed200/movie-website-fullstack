@@ -1,5 +1,6 @@
 import React from "react";
 import "./MoviePage.css";
+import { Link } from "react-router-dom";
 
 const MoviePage = (props) => {
   const imagesURL = "https://image.tmdb.org/t/p";
@@ -12,7 +13,8 @@ const MoviePage = (props) => {
 
   const moviesPerPage = props.moviesPerPage.map((movie) => {
     return (
-      <div
+      <Link
+        to={`/movies/${movie.id}`}
         key={movie.id}
         className="movie-card"
         onClick={handleShowMovieDetails}
@@ -25,7 +27,7 @@ const MoviePage = (props) => {
           />
         </div>
         <div className="movie-name">{movie.title}</div>
-      </div>
+      </Link>
     );
   });
 

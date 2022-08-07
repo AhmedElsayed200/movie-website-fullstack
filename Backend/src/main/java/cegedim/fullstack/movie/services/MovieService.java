@@ -32,4 +32,10 @@ public class MovieService {
 		System.out.println(urlForSearchMovies);
 		return restTemplate.getForEntity(urlForSearchMovies, String.class).getBody(); // edit this later [String.class]
 	}
+	
+	public String getMovieDetails(String movieID) {
+		String urlForMovieDetails = apiUrl + "/movie/" + movieID + "?api_key=" + apiKey + "&language=en-US";
+		System.out.println(urlForMovieDetails);
+		return restTemplate.getForEntity(urlForMovieDetails, String.class).getBody(); // edit this later [String.class]
+	}
 }

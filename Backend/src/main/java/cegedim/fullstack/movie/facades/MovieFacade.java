@@ -18,4 +18,8 @@ public class MovieFacade {
 	public Object searchMovies(String keyword) {
 		return moveService.searchMovies(keyword);
 	}
+	
+	public Object getMovieDetails(String movieID) {
+		return moveService.getMovieDetails(movieID);
+	}
 }

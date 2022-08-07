@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,5 +38,15 @@ public class MovieController {
 	public ResponseEntity<Object> searchMovies(@RequestParam(value = "query", defaultValue = "1") String keyword){
 		System.out.println("searchMovies called");
 		return new ResponseEntity<>(movieFacade.searchMovies(keyword), HttpStatus.OK);
+	}
+	
+	@CrossOrigin(origins = "*")
+	@GetMapping(path = "/{movieID}", produces = { 
+			MediaType.APPLICATION_JSON_VALUE, 
+			MediaType.APPLICATION_XML_VALUE 
+			}) // http://localhost:8080/api/v1/movies/search?query={keyword}
+	public ResponseEntity<Object> getMovieDetails(@PathVariable String movieID){
+		System.out.println("getMovieDetails called");
+		return new ResponseEntity<>(movieFacade.getMovieDetails(movieID), HttpStatus.OK);
 	}
 }

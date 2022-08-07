@@ -1,16 +1,17 @@
 import React from "react";
 import axios from "axios";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./MainPage.css";
 import { useState, useEffect } from "react";
 import { MoviePageAPI, SearchMovieAPI } from "../../Fetch Data/APIs";
 import MoviePage from "../Movie Page/MoviePage";
 import SearchBar from "../Search Bar/SearchBar";
 import PageManipulation from "../Page Manipulation/PageManipulation";
+import MovieDetails from "../Movie Details/MovieDetails";
 
 const MainPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [moviesPerPage, setMoviesPerPage] = useState([]);
-  const [movieDetails, setMovieDetails] = useState({});
   const [searchKey, setSearchKey] = useState("");
 
   useEffect(() => {
@@ -29,10 +30,6 @@ const MainPage = () => {
       .catch((err) => console.log(err));
   }, [pageNumber, searchKey]);
 
-  const getMovieDetails = (id) => {
-    setMovieDetails(id);
-  };
-
   const changePage = (page) => {
     let newPage = pageNumber + page;
     if (newPage >= 1 || newPage <= 100) setPageNumber(newPage);
@@ -43,16 +40,25 @@ const MainPage = () => {
     setSearchKey(txt);
   };
 
-  return (
+  const moviesPage = (
     <div className="main-page">
-      <div className="website-name">Cinemy</div>
       <SearchBar searchKey={searchKey} setSearch={setSearch} />
-      <MoviePage
-        moviesPerPage={moviesPerPage}
-        getMovieDetails={getMovieDetails}
-      />
+      <MoviePage moviesPerPage={moviesPerPage} />
       <PageManipulation changePage={changePage} />
     </div>
+  );
+
+  const websiteName = <div className="website-name">Cinemy</div>;
+
+  return (
+    <BrowserRouter>
+      {websiteName}
+      <Routes>
+        <Route path="/movies" element={moviesPage} />
+        <Route path="/movies/:movieID" element={<MovieDetails />} />
+        <Route path="*" element={<Navigate to="/movies" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
