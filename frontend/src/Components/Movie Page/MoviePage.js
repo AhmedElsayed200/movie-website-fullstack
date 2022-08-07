@@ -17,8 +17,12 @@ const MoviePage = (props) => {
         className="movie-card"
         onClick={handleShowMovieDetails}
       >
-        <div className="movie-img">
-          <img src={`${imageSource}/${movie.poster_path}`} alt={movie.title} />
+        <div className="movie-image">
+          <img
+            src={`${imageSource}/${movie.poster_path}`}
+            alt={movie.title}
+            className="primary-movie-image"
+          />
         </div>
         <div className="movie-name">{movie.title}</div>
       </div>

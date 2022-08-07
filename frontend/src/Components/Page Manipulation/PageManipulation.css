@@ -1,0 +1,82 @@
+/* .arrow {
+  cursor: pointer;
+  position: fixed;
+  top: 50vh;
+  display: block;
+  width: 100px;
+  height: 100px;
+  border: solid 6px #999;
+  border-radius: 100%;
+  z-index: 1;
+  transition: all 0.2s linear;
+}
+.arrow:before,
+.arrow:after {
+  content: "";
+  position: absolute;
+  width: 35%;
+  height: 10%;
+  top: 41%;
+  left: 55%;
+  background: #999;
+  z-index: 2;
+  transform: translate(-50%, -50%) rotate(135deg);
+  transition: all 0.2s linear;
+}
+.arrow:after {
+  z-index: 3;
+  top: 59%;
+  left: 55%;
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+.arrow:hover {
+  border: solid 8px #777;
+}
+.arrow:after,
+.arrow:before {
+  background: #777;
+}
+
+.arrow:active {
+  border: solid 8px #111;
+}
+.arrow:after,
+.arrow:before {
+  background: #111;
+}
+
+.left-arrow {
+  left: 10%;
+}
+
+.right-arrow {
+  right: 10%;
+} */
+
+.arrow {
+  color: white;
+  background: rgb(220 53 69 / 0%);
+  padding: 7px 10px;
+  border-radius: 20px;
+  font-size: 19px;
+  cursor: pointer;
+  border: none;
+  position: fixed;
+  top: 50vh;
+  /* width: 60px;
+  height: 60px; */
+  padding: 5px 15px;
+  font-size: 210%;
+}
+
+.arrow:hover {
+  background: rgb(220 53 69 / 75%);
+}
+
+.left-arrow {
+  left: 5%;
+}
+
+.right-arrow {
+  right: 5%;
+}

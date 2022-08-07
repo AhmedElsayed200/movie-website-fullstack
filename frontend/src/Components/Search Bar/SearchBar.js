@@ -16,7 +16,7 @@ const SearchBar = (props) => {
           className="input-text"
           onChange={(e) => setSearchKey(e.target.value)}
           value={searchKey}
-          placeholder="search for a movie"
+          placeholder="Search..."
         />
       </form>
     </div>

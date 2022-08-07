@@ -8,8 +8,8 @@ const PageManipulation = (props) => {
 
     return (
         <div className="page-manipulation">
-            <button className="left-arrow" onClick={(e) => handlePageManipulation(e, -1)}>&laquo;{" Previous"}</button>
-            <button className="right-arrow" onClick={(e) => handlePageManipulation(e, 1)}>{"Next "} &raquo;</button>
+            <button className="left-arrow arrow" onClick={(e) => handlePageManipulation(e, -1)}>&#8249;</button>
+            <button className="right-arrow arrow" onClick={(e) => handlePageManipulation(e, 1)}>&#8250;</button>
         </div>
     )
 }
