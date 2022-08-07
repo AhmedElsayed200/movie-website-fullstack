@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./MainPage.css";
 import { useState, useEffect } from "react";
-import { MoviePageAPI } from "../../Fetch Data/MoviePageData";
+import { MoviePageAPI, SearchMovieAPI } from "../../Fetch Data/APIs";
 import MoviePage from "../Movie Page/MoviePage";
 import SearchBar from "../Search Bar/SearchBar";
 import PageManipulation from "../Page Manipulation/PageManipulation";
@@ -14,14 +14,20 @@ const MainPage = () => {
   const [searchKey, setSearchKey] = useState("");
 
   useEffect(() => {
+    let API;
+    if (searchKey.length >= 3) {
+      API = SearchMovieAPI + searchKey;
+    } else {
+      API = MoviePageAPI + pageNumber;
+    }
     axios
-      .get(MoviePageAPI + pageNumber)
+      .get(API)
       .then((res) => {
         console.log(res.data.results);
         setMoviesPerPage(res.data.results);
       })
       .catch((err) => console.log(err));
-  }, [pageNumber]);
+  }, [pageNumber, searchKey]);
 
   const getMovieDetails = (id) => {
     setMovieDetails(id);
@@ -30,6 +36,7 @@ const MainPage = () => {
   const changePage = (page) => {
     let newPage = pageNumber + page;
     if (newPage >= 1 || newPage <= 100) setPageNumber(newPage);
+    setSearchKey("");
   };
 
   const setSearch = (txt) => {
@@ -39,7 +46,7 @@ const MainPage = () => {
   return (
     <div className="main-page">
       <div className="website-name">Cinemy</div>
-      <SearchBar setSearch={setSearch} />
+      <SearchBar searchKey={searchKey} setSearch={setSearch} />
       <MoviePage
         moviesPerPage={moviesPerPage}
         getMovieDetails={getMovieDetails}

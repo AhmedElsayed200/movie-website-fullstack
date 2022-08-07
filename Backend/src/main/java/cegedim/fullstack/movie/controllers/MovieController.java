@@ -25,7 +25,17 @@ public class MovieController {
 			MediaType.APPLICATION_XML_VALUE 
 			}) // http://localhost:8080/api/v1/movies/popular?page={page}
 	public ResponseEntity<Object> getPopularMovies(@RequestParam(value = "page", defaultValue = "1") int page){
-		System.out.println("helloooooo");
+		System.out.println("getPopularMovies called");
 		return new ResponseEntity<>(movieFacade.getPopularMovies(page), HttpStatus.OK);
+	}
+	
+	@CrossOrigin(origins = "*")
+	@GetMapping(path = "/search", produces = { 
+			MediaType.APPLICATION_JSON_VALUE, 
+			MediaType.APPLICATION_XML_VALUE 
+			}) // http://localhost:8080/api/v1/movies/search?query={keyword}
+	public ResponseEntity<Object> searchMovies(@RequestParam(value = "query", defaultValue = "1") String keyword){
+		System.out.println("searchMovies called");
+		return new ResponseEntity<>(movieFacade.searchMovies(keyword), HttpStatus.OK);
 	}
 }

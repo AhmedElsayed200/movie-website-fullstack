@@ -17,10 +17,19 @@ public class MovieService {
 	
 	private static final String URL_SEGEMENT_FOR_POPULAR = "/movie/popular";
 	
+	private static final String URL_SEGEMENT_FOR_SEARCH = "/search/movie";
+	
 	public String getPopularMovies(Integer page) {
 		String urlForPopularMovies = apiUrl + URL_SEGEMENT_FOR_POPULAR + "?api_key=" + apiKey + "&page="
 				+ page.intValue();
 		System.out.println(urlForPopularMovies);
 		return restTemplate.getForEntity(urlForPopularMovies, String.class).getBody(); // edit this later [String.class]
+	}
+	
+	public String searchMovies(String keyword) {
+		String urlForSearchMovies = apiUrl + URL_SEGEMENT_FOR_SEARCH + "?api_key=" + apiKey + "&query="
+				+ keyword;
+		System.out.println(urlForSearchMovies);
+		return restTemplate.getForEntity(urlForSearchMovies, String.class).getBody(); // edit this later [String.class]
 	}
 }

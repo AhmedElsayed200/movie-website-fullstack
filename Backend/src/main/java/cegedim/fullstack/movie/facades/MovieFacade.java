@@ -14,4 +14,8 @@ public class MovieFacade {
 	public Object getPopularMovies(Integer page) {
 		return moveService.getPopularMovies(page);
 	}
+	
+	public Object searchMovies(String keyword) {
+		return moveService.searchMovies(keyword);
+	}
 }
