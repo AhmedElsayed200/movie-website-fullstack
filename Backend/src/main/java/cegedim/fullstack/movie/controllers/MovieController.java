@@ -1,5 +1,6 @@
 package cegedim.fullstack.movie.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,14 +19,15 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(path = "api/v1/movies")
 public class MovieController {
 	
-	private final MovieFacade movieFacade = new MovieFacade();
+	@Autowired
+	MovieFacade movieFacade;
 	
 	@CrossOrigin(origins = "*")
 	@GetMapping(path = "/popular", produces = { 
 			MediaType.APPLICATION_JSON_VALUE, 
 			MediaType.APPLICATION_XML_VALUE 
 			}) // http://localhost:8080/api/v1/movies/popular?page={page}
-	public ResponseEntity<Object> getPopularMovies(@RequestParam(value = "page", defaultValue = "1") int page){
+	public ResponseEntity<Object> getPopularMovies(@RequestParam(value = "page", defaultValue = "1") Integer page){
 		System.out.println("getPopularMovies called");
 		return new ResponseEntity<>(movieFacade.getPopularMovies(page), HttpStatus.OK);
 	}
@@ -44,8 +46,8 @@ public class MovieController {
 	@GetMapping(path = "/{movieID}", produces = { 
 			MediaType.APPLICATION_JSON_VALUE, 
 			MediaType.APPLICATION_XML_VALUE 
-			}) // http://localhost:8080/api/v1/movies/search?query={keyword}
-	public ResponseEntity<Object> getMovieDetails(@PathVariable String movieID){
+			}) // http://localhost:8080/api/v1/movies/{movieID}
+	public ResponseEntity<Object> getMovieDetails(@PathVariable Long movieID){
 		System.out.println("getMovieDetails called");
 		return new ResponseEntity<>(movieFacade.getMovieDetails(movieID), HttpStatus.OK);
 	}

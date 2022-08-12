@@ -55,7 +55,7 @@ const MainPage = () => {
       {websiteName}
       <Routes>
         <Route path="/movies" element={moviesPage} />
-        <Route path="/movies/:movieID" element={<MovieDetails />} />
+        <Route path="/movies/:movieTitle/:movieID" element={<MovieDetails />} />
         <Route path="*" element={<Navigate to="/movies" replace />} />
       </Routes>
     </BrowserRouter>

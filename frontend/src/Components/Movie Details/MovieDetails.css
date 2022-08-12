@@ -29,3 +29,12 @@
 .info-txt {
   margin-bottom: 30px;
 }
+
+@media only screen and (max-width: 800px) {
+  .movie-details .movie-image {
+    width: 70%;
+  }
+  .movie-info {
+    font-size: 130%;
+  }
+}

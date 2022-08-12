@@ -27,5 +27,9 @@
   text-align: center;
 }
 
-/* .movie-card:hover {
-} */
+@media only screen and (max-width: 600px) {
+  .movie-page {
+    grid-template-rows: repeat(10, auto);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

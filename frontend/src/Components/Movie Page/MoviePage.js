@@ -14,7 +14,7 @@ const MoviePage = (props) => {
   const moviesPerPage = props.moviesPerPage.map((movie) => {
     return (
       <Link
-        to={`/movies/${movie.id}`}
+        to={`/movies/${movie.title}/${movie.id}`}
         key={movie.id}
         className="movie-card"
         onClick={handleShowMovieDetails}

@@ -1,7 +1,9 @@
 package cegedim.fullstack.movie.facades;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cegedim.fullstack.movie.data.MoviePage;
 import cegedim.fullstack.movie.services.MovieService;
 import lombok.RequiredArgsConstructor;
 
@@ -9,17 +11,18 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MovieFacade {
 	
-	public final MovieService moveService = new MovieService();
+	@Autowired
+	MovieService movieService;
 	
 	public Object getPopularMovies(Integer page) {
-		return moveService.getPopularMovies(page);
+		return movieService.getPopularMovies(page);
 	}
 	
 	public Object searchMovies(String keyword) {
-		return moveService.searchMovies(keyword);
+		return movieService.searchMovies(keyword);
 	}
 	
-	public Object getMovieDetails(String movieID) {
-		return moveService.getMovieDetails(movieID);
+	public Object getMovieDetails(Long movieID) {
+		return movieService.getMovieDetails(movieID);
 	}
 }

@@ -22,7 +22,7 @@ const MovieDetails = () => {
         setMovieDetails(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [params.movieID]);
 
   return (
     <div className="movie-details">
