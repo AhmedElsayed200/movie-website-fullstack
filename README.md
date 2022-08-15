@@ -36,4 +36,13 @@ The dependencies used in this application with its version:
    2. Build the project: `npm run build`
    3. Start the project: `npm start`
 
+## Docker images
+
+1. Go to this link to pull the backend image and run it: https://hub.docker.com/r/ahmedelsayed200/movie-backend
+   - Pull the image using this command: `docker pull ahmedelsayed200/movie-backend`
+   - Run the image using this command: `docker run --publish 3000:3000 ahmedelsayed200/movie-backend`
+2. Go to this link to pull the backend image and run it: https://hub.docker.com/r/ahmedelsayed200/movie-frontend
+   - Pull the image using this command: `docker pull ahmedelsayed200/movie-frontend`
+   - Run the image using this command: `docker run -p 8080:8080 ahmedelsayed200/movie-frontend`
+
 > The website is now working, hope you enjoy it 😃
